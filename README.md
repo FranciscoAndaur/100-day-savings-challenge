@@ -1,43 +1,133 @@
-# 100-Day Savings Planner  
+# 100-Day Savings Challenge App - Deployment and Usage Guide
 
-The **100-Day Savings Planner** is a simple and efficient app designed to help you create and track a 100-day savings program.  
+## For Developers: Deploying the App
+
+### Prerequisites
+Make sure you have the following installed:
+```bash
+pip3 install pyinstaller
+pip3 install tkcalendar
+pip3 install icalendar
+pip3 install pytz
+```
+
+### Setting Up the Project
+1. Create a new directory for your project:
+```bash
+mkdir 100-day-savings
+cd 100-day-savings
+```
+
+2. Save the app code as `savings_app.py`
+
+### Creating the Executable
+1. Open Terminal and navigate to your project directory:
+```bash
+cd path/to/100-day-savings
+```
+
+2. Run PyInstaller with these options:
+```bash
+pyinstaller --onefile --windowed --name="Savings Calculator" savings_app.py
+```
+
+The flags mean:
+- `--onefile`: Create a single executable file
+- `--windowed`: Don't show Terminal when running
+- `--name`: Set the name of the executable
+
+### Finding the Executable
+After PyInstaller completes:
+1. Navigate to the `dist` folder in your project directory
+2. You'll find `Savings Calculator.app` (Mac) or `Savings Calculator.exe` (Windows)
+
+### Distribution
+For Mac users:
+1. Right-click on the .app file
+2. Select "Compress"
+3. Share the resulting zip file
+
+For Windows users:
+1. Zip the entire folder containing the .exe
+2. Share the zip file
+
+## For Users: Running the App
+
+### Installation
+1. Extract the zip file
+2. For Mac:
+   - Right-click "Savings Calculator.app"
+   - Select "Open"
+   - Click "Open" in the security dialog
+3. For Windows:
+   - Double-click "Savings Calculator.exe"
+
+### Using the App
+
+#### Setting a Start Date
+1. Use the calendar widget to select your start date
+2. The selected date appears below the calendar
+
+#### Generating Your Savings Plan
+1. Click "Generate Savings Report"
+2. The report shows:
+   - Daily savings amounts
+   - Weekly summaries
+   - Total savings goal
+
+#### Exporting to Calendar
+1. Click "Export to Calendar"
+2. Choose where to save the .ics file
+3. Import the .ics file into your calendar app:
+   - Apple Calendar: Double-click the file
+   - Google Calendar: Import through calendar settings
+   - Outlook: Double-click or import through calendar menu
+
+### Common Issues and Solutions
+
+#### Mac Security Warning
+If you see "app cannot be opened because it is from an unidentified developer":
+1. Right-click the app
+2. Select "Open"
+3. Click "Open" in the dialog
+
+#### Calendar Import Issues
+If calendar events don't import:
+1. Make sure the .ics file downloaded successfully
+2. Try manually importing through your calendar app
+3. Check if your calendar app supports .ics files
+
+#### App Won't Start
+1. Ensure all prerequisites are installed
+2. Try running from a directory without spaces
+3. Check system requirements:
+   - Mac: macOS 10.14 or later
+   - Windows: Windows 10 or later
+
+## Technical Details
+
+### File Structure
+```
+100-day-savings/
+├── savings_app.py
+├── build/
+├── dist/
+│   └── Savings Calculator.app
+└── requirements.txt
+```
+
+### Requirements
+```txt
+tkcalendar==1.6.1
+icalendar==5.0.7
+pytz==2024.1
+```
+
+### Debugging
+If needed, run the app from Terminal to see error messages:
+```bash
+./dist/Savings\ Calculator.app/Contents/MacOS/Savings\ Calculator
+```
 
 ---
-
-## How It Works  
-
-### Step 1: Select a Start Date  
-- Use the built-in calendar interface to choose a start date for your savings challenge.  
-- This date will serve as the beginning of your 100-day plan.  
-
-### Step 2: Generate a Savings Report  
-- Once you’ve selected a start date, click the **Generate Report** button.  
-- The app will create a detailed breakdown of your savings program, showing:  
-  - Daily savings contributions.  
-  - Cumulative savings totals.  
-  - Milestone markers (e.g., halfway or completion).  
-- You can view this report directly in the app or export it as a PDF or spreadsheet.  
-
-### Step 3: Generate Calendar Events  
-- After reviewing your savings plan, click the **Generate Calendar Events** button.  
-- The app will create a `.ics` file, which contains all the events for your savings program (one for each day).  
-- Download the `.ics` file and import it into your favorite calendar app (e.g., macOS Calendar, Google Calendar).  
-- Each event will remind you of your daily savings contribution and keep you on track.  
-
----
-
-## Key Features  
-- **Custom Start Date**: Choose when your 100-day savings journey begins.  
-- **Savings Reports**: View a complete breakdown of your daily and cumulative progress.  
-- **Calendar Integration**: Seamlessly add savings reminders to your personal calendar.  
-
----
-
-### Example Workflow  
-1. Open the app and select your desired start date from the calendar.  
-2. Click **Generate Report** to view your 100-day savings plan.  
-3. Click **Generate Calendar Events** to download your `.ics` file and stay on schedule.  
-
----
-
-Get started today and take the first step toward achieving your savings goals!  
+Version 1.0 - Last Updated: January 2025
